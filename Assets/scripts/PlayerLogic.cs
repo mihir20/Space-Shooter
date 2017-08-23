@@ -39,6 +39,10 @@ public class PlayerLogic : MonoBehaviour {
 
     void spwanProjectile()
     {
-        Instantiate(projectile, transform.position, Quaternion.identity);
+        Instantiate(projectile, new Vector3(transform.position.x,transform.position.y,0), Quaternion.identity);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag=="collision") { Debug.Log("collision"); }
     }
 }
