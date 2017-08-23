@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class scoreLogic : MonoBehaviour {
     Text txt;
-    public int score = 12;
+    public int score = 0;
 	// Use this for initialization
 	void Start () {
         txt = GetComponent<Text>();

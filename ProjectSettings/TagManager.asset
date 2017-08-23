@@ -6,6 +6,7 @@ TagManager:
   tags:
   - collision
   - projectile
+  - GUI
   layers:
   - Default
   - TransparentFX
