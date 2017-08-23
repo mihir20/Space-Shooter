@@ -1,0 +1,44 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerLogic : MonoBehaviour {
+
+    public GameObject projectile;
+    public bool isShooting = true;
+    public float shootingTime = 0.5f;
+
+    public float playerSpeed = 0.25f;
+    float maxDistanceX = 30.0f;
+
+	// Use this for initialization
+	void Start () {
+        StartCoroutine(projectileShootTimer());
+	}
+	
+	// Update is called once per frame
+	void Update () {
+        PlayerMovement();
+	}
+    void PlayerMovement()
+    {
+        if (Input.GetKey(KeyCode.D) && transform.position.x <= maxDistanceX) {
+            transform.Translate(playerSpeed, 0, 0);
+        }
+        if (Input.GetKey(KeyCode.A) && transform.position.x >= -maxDistanceX)
+        {
+            transform.Translate(-playerSpeed, 0, 0);
+        }
+    }
+    IEnumerator projectileShootTimer() {
+        while (isShooting == true) {
+            spwanProjectile();
+            yield return new WaitForSeconds(shootingTime);
+            }
+    }
+
+    void spwanProjectile()
+    {
+        Instantiate(projectile, transform.position, Quaternion.identity);
+    }
+}
